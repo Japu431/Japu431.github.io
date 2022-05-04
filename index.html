@@ -7,9 +7,10 @@
     <title>Fundação FITO - Sistema</title>
     <link rel="stylesheet" href="./style/reset.css" />
     <link rel="stylesheet" href="./style/app.css" />
+    <link rel="stylesheet" href="./style/midias-querys.css">
   </head>
   <body>
-    <h1>Alunos Cadastrados</h1>
+    <h1 id="titulo-page">Alunos Cadastrados</h1>
     <hr />
     <div class="container">
       <input
@@ -19,7 +20,7 @@
         placeholder="Pesquisar aluno..."
       />
       <span id="info-teste">Clicar duas vezes para excluir aluno (senha 12345)</span>
-      <table>
+      <table class="table">
         <thead>
           <tr>
             <th>Nome</th>
@@ -139,5 +140,8 @@
     </div>
     <script src="./js/database.js"></script>
     <script src="./js/app.js"></script>
+    <script src="./js/apaga-aluno.js"></script>
+    <script src="./js/buscar-aluno.js"></script>
+    <script src="./js/filtro.js"></script>
   </body>
 </html>

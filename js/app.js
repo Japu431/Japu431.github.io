@@ -1,34 +1,4 @@
 const adicionarAluno = document.querySelector('#adicionar-aluno');
-const tabela = document.querySelector("#tabela-alunos");
-
-let buscarAlunoNoBancoDeDados = document.querySelector("#buscar-aluno");
-
-buscarAlunoNoBancoDeDados.addEventListener('click', function () {
-    for (let i = 0; i < db.length; i++) {
-        const aluno = db[i];
-        let trAluno = montaTrAluno(aluno);
-        renderAluno(trAluno)
-    }
-})
-
-
-tabela.addEventListener("dblclick", (event) => {
-
-    const askPassword = prompt('Digite a senha para remover aluno.');
-
-    if (askPassword != "12345") {
-        alert('Senha incorreta! Não foi possível remover aluno do sistema! :D')
-        return;
-    } else {
-        const alvo = event.target;
-        const alvoElementoPai = alvo.parentNode
-        alvoElementoPai.classList.add("efeito-exclui");
-        setTimeout(() => {
-            alvo.parentNode.remove();
-        }, 500)
-
-    }
-})
 
 adicionarAluno.addEventListener('click', function (e) {
     e.preventDefault();
@@ -50,30 +20,6 @@ adicionarAluno.addEventListener('click', function (e) {
 
 })
 
-let filtro = document.querySelector("#filtra-aluno");
-
-filtro.addEventListener("input", () => {
-    let alunos = document.querySelectorAll(".aluno");
-
-    if (filtro.value.length > 0) {
-        for (let i = 0; i < alunos.length; i++) {
-            let aluno = alunos[i];
-
-            let tdNome = aluno.querySelector('.info-nome');
-            let nome = tdNome.textContent;
-
-            const pattern = new RegExp(filtro.value, 'i')
-
-            !pattern.test(nome) ? aluno.classList.add('invisivel') : aluno.classList.remove('invisivel')
-
-        }
-    } else {
-        for (let i = 0; i < alunos.length; i++) {
-            const aluno = alunos[i];
-            aluno.classList.remove("invisivel");
-        }
-    }
-})
 
 function verificaNotaVermelha(alunoMF) {
     if (alunoMF < 6.0) {
@@ -90,7 +36,6 @@ function renderAluno(trAluno) {
 }
 
 function montaTrAluno(aluno) {
-    console.log(aluno);
     let tr = document.createElement('tr');
 
     if (aluno.mediaFinal < 6.0) {
@@ -129,7 +74,6 @@ function validaCampos(aluno) {
 
     return messages;
 }
-
 
 function mostraMensagensDeErro(erros) {
     let ul = document.querySelector('#erros');
